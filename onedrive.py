@@ -22,7 +22,7 @@ class OneDriveDataset:
         if self.excel is not None:
             df = pd.read_excel(resultUrl)
         else:
-            df = pd.read_csv(resultUrl)
+            df = pd.read_csv(filepath_or_buffer=resultUrl, engine="python")
         self.df = df
         return df
 
@@ -30,4 +30,4 @@ class OneDriveDataset:
         return self.df[i]
 
     def __len__(self):
-        return len(self)
+        return len(self.df)
